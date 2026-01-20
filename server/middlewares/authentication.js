@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const { User } = require("../models");
-const e = require("express");
 
 const authenticate = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -18,6 +17,7 @@ const authenticate = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
+    console.log("🚀 ~ authenticate ~ error:", error);
     if (
       error.name === "Unauthenticated" ||
       error.name === "JsonWebTokenError"
