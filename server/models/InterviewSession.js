@@ -14,6 +14,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       difficulty: {
+        type: DataTypes.STRING,
         defaultValue: "Junior",
       },
       language: {

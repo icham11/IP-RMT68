@@ -21,4 +21,11 @@ if (dbConfig.use_env_variable) {
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.User = require("./User")(sequelize);
+db.InterviewSession = require("./InterviewSession")(sequelize);
+
+// Define associations
+db.User.hasMany(db.InterviewSession, { foreignKey: "userId" });
+db.InterviewSession.belongsTo(db.User, { foreignKey: "userId" });
+
 module.exports = db;
